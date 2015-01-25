@@ -1,0 +1,29 @@
+{
+"name": "chameleon82/yiindo",
+"description": "Yii2 CMS",
+"keywords": ["yii2"],
+"homepage": "",
+"type": "project",
+"license": "",
+"support": {
+"issues": "https://github.com/chameleon82/yiindo/issues?q=is%3Aopen",
+"forum": "",
+"source": "https://github.com/chameleon82/yiindo"
+},
+"authors": [
+{
+"name": "Alex Nekrasov",
+"email": "snake_nas@mail.ru"
+}
+],
+"minimum-stability": "stable",
+"require": {
+"php": ">=5.4.0",
+"yiisoft/yii2": "*",
+"yiisoft/yii2-bootstrap": "*",
+},
+"require-dev": {
+"yiisoft/yii2-debug": "*",
+"yiisoft/yii2-gii": "*"
+}
+}
