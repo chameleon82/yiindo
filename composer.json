@@ -1,6 +1,7 @@
 {
 "name": "chameleon82/yiindo",
 "description": "Yii2 CMS",
+"version":"0.1-dev",
 "keywords": ["yii2"],
 "homepage": "",
 "type": "project",
