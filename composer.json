@@ -16,7 +16,7 @@
 "email": "snake_nas@mail.ru"
 }
 ],
-"minimum-stability": "stable",
+"minimum-stability": "dev",
 "require": {
 "php": ">=5.4.0",
 "yiisoft/yii2": "*",
