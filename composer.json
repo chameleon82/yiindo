@@ -1,14 +1,12 @@
 {
 "name": "chameleon82/yiindo",
 "description": "Yii2 CMS",
-"version":"0.1-dev",
 "keywords": ["yii2"],
-"homepage": "",
+"homepage": "https://github.com/chameleon82/yiindo",
 "type": "project",
-"license": "",
+"license": "BSD-3-Clause",
 "support": {
 "issues": "https://github.com/chameleon82/yiindo/issues?q=is%3Aopen",
-"forum": "",
 "source": "https://github.com/chameleon82/yiindo"
 },
 "authors": [
