@@ -1,0 +1,6 @@
+<?php
+/**
+ * Message translations.
+*/
+  return [
+      ];

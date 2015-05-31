@@ -20,6 +20,7 @@ class m150317_161236_module_catalog_init extends Migration
             'code' =>  Schema::TYPE_STRING . '(50)',
             'title' => Schema::TYPE_STRING . '(50)',
             'slug' => Schema::TYPE_STRING . '(50)',
+            'ordering' => Schema::TYPE_INTEGER.' NOT NULL',
             'disabled' => Schema::TYPE_INTEGER.' NOT NULL',
             'parent_id' => Schema::TYPE_INTEGER
         ], $tableOptions);
@@ -36,6 +37,9 @@ class m150317_161236_module_catalog_init extends Migration
             'category_id' =>  Schema::TYPE_INTEGER.' NOT NULL',
             'code' =>  Schema::TYPE_STRING . '(50)',
             'title' => Schema::TYPE_STRING . '(50)',
+            'filter_type' => Schema::TYPE_STRING.'(50)',
+            'measure' => Schema::TYPE_STRING.'(10)',
+            'ordering' => Schema::TYPE_INTEGER.' NOT NULL',
             'disabled' => Schema::TYPE_INTEGER.' NOT NULL'
         ], $tableOptions);
 
@@ -47,6 +51,8 @@ class m150317_161236_module_catalog_init extends Migration
             'category_id' => Schema::TYPE_INTEGER . ' NOT NULL',
             'created_at' => Schema::TYPE_INTEGER . ' NOT NULL',
             'updated_at' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'author_id' => Schema::TYPE_INTEGER. ' NOT NULL',
+            'status' => Schema::TYPE_INTEGER.' NOT NULL',
         ], $tableOptions);
 
         $this->createTable('{{%catalog_attribute_values}}', [
@@ -63,9 +69,9 @@ class m150317_161236_module_catalog_init extends Migration
         $this->insert('{{%catalog_categories}}', ['id' => 4, 'title' => 'Samsung Phones', 'slug' => 'phones-samsung', 'parent_id' => 2, ]);
         $this->insert('{{%catalog_categories}}', ['id' => 5, 'title' => 'Одежда', 'slug' => 'weather', ]);
 
-        $this->insert('{{%catalog_category_attributes}}', ['id' => 1, 'category_id' => 3,'code' => 'model', 'title' => 'Модель']);
-        $this->insert('{{%catalog_category_attributes}}', ['id' => 2, 'category_id' => 3,'code' => 'color', 'title' => 'Цвет']);
-        $this->insert('{{%catalog_category_attributes}}', ['id' => 3, 'category_id' => 3,'code' => 'weight', 'title' => 'Вес']);
+        $this->insert('{{%catalog_category_attributes}}', ['id' => 1, 'category_id' => 3,'code' => 'model', 'filter_type'=> 'TEXT', 'title' => 'Модель']);
+        $this->insert('{{%catalog_category_attributes}}', ['id' => 2, 'category_id' => 3,'code' => 'color', 'filter_type'=> 'CHECKBOX', 'title' => 'Цвет']);
+        $this->insert('{{%catalog_category_attributes}}', ['id' => 3, 'category_id' => 3,'code' => 'weight','filter_type'=> 'RANGE', 'title' => 'Вес']);
 
         $this->insert('{{%catalog}}', ['id' => 1, 'title' => 'Nokia 3310', 'cost' => 100, 'category_id' => 3,]);
         $this->insert('{{%catalog}}', ['id' => 2, 'title' => 'Nokia N8', 'cost' => 150 , 'category_id' => 3,]);
@@ -75,11 +81,18 @@ class m150317_161236_module_catalog_init extends Migration
         $this->insert('{{%catalog_attribute_values}}', ['id' => 12, 'catalog_id' => 2, 'attribute_id' => 2, 'value' => 'Красный',]);
 
 
+        $this->createTable('{{%gallery_albums}}', [
+            'id' => Schema::TYPE_PK,
+            'title' => Schema::TYPE_STRING.'(255) NOT NULL',
+            'content' => Schema::TYPE_TEXT,
+        ], $tableOptions);
     }
 
     public function safeDown()
     {
-       $this->dropTable('{{%catalog_attribute_values}}');
+        $this->dropTable('{{%gallery_albums}}');
+
+        $this->dropTable('{{%catalog_attribute_values}}');
         $this->dropTable('{{%catalog}}');
         $this->dropTable('{{%catalog_category_attributes}}');
         $this->dropTable('{{%catalog_categories}}');

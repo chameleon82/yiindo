@@ -17,23 +17,33 @@ class CategoryController extends Controller
 
         if (!$category) throw New \yii\web\NotFoundHttpException(\Yii::t('app','Page not found'));
 
-    /*    $dataProvider = new \app\modules\catalog\components\CatalogDataProvider([
-            'category_id' => $category->id,
-            'pagination' => [
-       //         'pageSize' => 1,
-            ],
-        ]);*/
+        /*    $dataProvider = new \app\modules\catalog\components\CatalogDataProvider([
+                'category_id' => $category->id,
+                'pagination' => [
+           //         'pageSize' => 1,
+                ],
+            ]);*/
         $cs = new CatalogSearch();
 
-       // return $this->render('index',[ 'model' => $category, 'dataProvider' => $dataProvider ]);
+        // return $this->render('index',[ 'model' => $category, 'dataProvider' => $dataProvider ]);
 
         $searchModel = new CatalogSearch(['category_id' => $category->id]);
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('/position/index', [
+        /*  return $this->render('/position/index', [
+              'category' => $category,
+              'searchModel' => $searchModel,
+              'dataProvider' => $dataProvider,
+          ]);*/
+        $options = [
             'category' => $category,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-        ]);
+        ];
+        if (Yii::$app->request->isPjax)
+            return $this->renderAjax('/position/index', $options);
+        else
+            return $this->render('/position/index', $options);
+
     }
 }

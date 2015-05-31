@@ -28,6 +28,16 @@ class Module extends \yii\base\Module
                 'modules/catalog/catalog' => 'catalog.php',
             ],
         ];
+
+        Yii::$app->i18n->translations['catalog'] = [
+            'class' => 'yii\i18n\PhpMessageSource',
+            'sourceLanguage' => 'en-US',
+            'basePath' => '@app/modules/catalog/messages',
+            'fileMap' => [
+                'catalog' => 'catalog.php',
+            ],
+        ];
+
     }
 
     public static function t($category, $message, $params = [], $language = null)

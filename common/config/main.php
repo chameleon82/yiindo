@@ -23,5 +23,8 @@ return [
     'modules' => [
 
     ],
-
+    'aliases' => [
+        '@static' => dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . 'static',
+        '@webstatic' => '/static/',
+        ]
 ];

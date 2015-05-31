@@ -24,8 +24,15 @@ use app\modules\catalog\models\CatalogValues;
           echo $form->field($model, 'attributeValues['.$attribute->id.'][CatalogValues][value]')->textInput(['value'=>$value->value])->label($attribute->title);
        }*/
       foreach ($model->attributeValues as $key => $value) {
-        //  print_r($value->errors);
-          echo $form->field($model, 'attributeValues['.$key.'][value]')->textInput(['value'=>$value->value])->label($value->categoryAttribute->title);
+//          print_r($value->errors);
+          switch($value->categoryAttribute->data_type) {
+            case CatalogAttributes::DATA_TYPE_BOOLEAN:
+                 echo $form->field($model, "attributeValues[$key][value]")->checkbox(['label'=>$value->categoryAttribute->title]);
+                 break;
+            default:
+                 echo $form->field($model, "attributeValues[$key][value]")->label($value->categoryAttribute->title);
+          }
+          //echo $form->field($model, 'attributeValues['.$key.'][value]')->textInput(['value'=>$value->value])->label($value->categoryAttribute->title);
       }
 
     ?>

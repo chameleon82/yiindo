@@ -1,10 +1,14 @@
 <?php
 use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\foundation\Nav as er;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use frontend\widgets\Alert;
+use yii\widgets\ActiveForm;
+use frontend\models\Search;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -26,6 +30,7 @@ AppAsset::register($this);
 
     <div class="wrap">
         <?php
+   //     er::begin();er::end();
             NavBar::begin([
                 'brandLabel' => 'Yiindo',
                 'brandUrl' => Yii::$app->homeUrl,
@@ -38,18 +43,16 @@ AppAsset::register($this);
                 ['label' => \Yii::t('app','Catalog'), 'url' => ['/catalog']],
                 ['label' => \Yii::t('app','About'), 'url' => ['/site/about']],
                 ['label' => \Yii::t('app','Contact'), 'url' => ['/site/contact']],
+                //'<li><span class="glyphicon glyphicon-align-left" aria-hidden="true"></span></li>',
             ];
             if (Yii::$app->user->isGuest) {
                 $menuItems[] = ['label' => \Yii::t('app','Signup'), 'url' => ['/site/signup']];
                 $menuItems[] = ['label' => \Yii::t('app','Login'), 'url' => ['/site/login']];
             } else {
-            //    $menuItems[] = ['img'
-                $menuItems[] = [
-                    'label' => \Yii::t('app', 'Logout ({username})', [ 'username' => Yii::$app->user->identity->username ]),
-                    'url' => ['/site/logout'],
-                    'linkOptions' => ['data-method' => 'post']
-                ];
+                $menuItems[] = Html::tag('li',Html::a('', Url::to(['/profile']),['class'=>'glyphicon glyphicon-user','aria-hidden'=>'true','title' => \Yii::t('app', '({username})', [ 'username' => Yii::$app->user->identity->username ])]));
+                $menuItems[] = Html::tag('li',Html::a('', Url::to(['/site/logout']),['data-method' => 'post','class'=>'glyphicon glyphicon-log-out','aria-hidden'=>'true','title' => \Yii::t('app', 'Logout ({username})', [ 'username' => Yii::$app->user->identity->username ])]));
             }
+
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => $menuItems,
@@ -62,6 +65,19 @@ AppAsset::register($this);
 
 
         <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <?$form = ActiveForm::begin(['action'=>Url::to(['/search/index']),'method'=>'GET']); ?>
+                    <div class="form-group has-feedback">
+                        <? echo Html::textInput('q','',['class'=>'form-control','placeholder' => \Yii::t('app','Search')]);
+                        echo Html::tag('span','',['class'=>'glyphicon glyphicon-search form-control-feedback']);
+?>
+                    </div>
+                    <?php ActiveForm::end(); ?>
+                </div>
+            </div>
+
+
             <?
             if (\Yii::$app->user->can('admin') && isset($this->params['adminmenu'])) {
                 NavBar::begin([
@@ -88,7 +104,7 @@ AppAsset::register($this);
     <footer class="footer">
         <div class="container">
         <p class="pull-left">&copy; Yiindo CMS <?= date('Y') ?></p>
-        <p class="pull-right"><?= Html::a('RU', \yii\helpers\Url::current(['lang' => 'ru'])) .' | '. Html::a('EN', \yii\helpers\Url::current(['lang' => 'en'])) ?></p>
+        <p class="pull-right"><?= Html::a('RU', Url::current(['lang' => 'ru'])) .' | '. Html::a('EN', Url::current(['lang' => 'en'])) ?></p>
         </div>
     </footer>
 

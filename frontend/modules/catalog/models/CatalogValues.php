@@ -33,7 +33,7 @@ class CatalogValues extends \yii\db\ActiveRecord
             [['id', 'catalog_id', 'attribute_id'], 'integer'],
             [['catalog_id','attribute_id'], 'required'],
             [['value'], 'safe'],
-            [['value'], 'required'],
+  //          [['value'], 'required'],
         ];
     }
 
@@ -56,5 +56,18 @@ class CatalogValues extends \yii\db\ActiveRecord
 
     public function getPosition() {
         return $this->hasOne( Catalog::className(), array('id' => 'catalog_id'));
+    }
+
+
+    public function getFormatValue(){
+        switch($this->categoryAttribute->data_type) {
+            case CatalogAttributes::DATA_TYPE_STRING:
+                return $this->value;
+                break;
+            case CatalogAttributes::DATA_TYPE_BOOLEAN:
+                return $this->value==1?Yii::t('app','Yes'):Yii::t('app','No');
+                break;
+        }
+        return $this->value;
     }
 }

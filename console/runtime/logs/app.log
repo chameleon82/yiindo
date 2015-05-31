@@ -2965,3 +2965,253 @@ Stack trace:
     ]
     'argc' => 2
 ]
+2015-05-04 09:13:26 [-][-][-][error][yii\console\Exception] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "init".' in Z:\home\yiindo-master.dev\www\yiindo\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 Z:\home\yiindo-master.dev\www\yiindo\vendor\yiisoft\yii2\console\Application.php(161): yii\base\Module->runAction('init', Array)
+#1 Z:\home\yiindo-master.dev\www\yiindo\vendor\yiisoft\yii2\console\Application.php(137): yii\console\Application->runAction('init', Array)
+#2 Z:\home\yiindo-master.dev\www\yiindo\vendor\yiisoft\yii2\base\Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#3 Z:\home\yiindo-master.dev\www\yiindo\yii(31): yii\base\Application->run()
+#4 {main}
+
+Next exception 'yii\console\Exception' with message 'Unknown command "init".' in Z:\home\yiindo-master.dev\www\yiindo\vendor\yiisoft\yii2\console\Application.php:163
+Stack trace:
+#0 Z:\home\yiindo-master.dev\www\yiindo\vendor\yiisoft\yii2\console\Application.php(137): yii\console\Application->runAction('init', Array)
+#1 Z:\home\yiindo-master.dev\www\yiindo\vendor\yiisoft\yii2\base\Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#2 Z:\home\yiindo-master.dev\www\yiindo\yii(31): yii\base\Application->run()
+#3 {main}
+2015-05-04 09:13:26 [-][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\Александр\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'NOTEBOOK'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Александр'
+    'LOCALAPPDATA' => 'C:\\Users\\Александр\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NOTEBOOK'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\OpenCL SDK\\2.0\\bin\\x86;C:\\Program Files (x86)\\Intel\\OpenCL SDK\\2.0\\bin\\x64;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;Z:\\usr\\local\\php5;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PHP_COMMAND' => 'php.exe'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 42 Stepping 7, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2a07'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\8523~1\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\8523~1\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'Notebook'
+    'USERNAME' => 'Александр'
+    'USERPROFILE' => 'C:\\Users\\Александр'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'YII_PATH' => 'Z:\\home\\yiindo-master.dev\\www\\yiindo\\'
+    'PHP_SELF' => 'Z:\\home\\yiindo-master.dev\\www\\yiindo\\yii'
+    'SCRIPT_NAME' => 'Z:\\home\\yiindo-master.dev\\www\\yiindo\\yii'
+    'SCRIPT_FILENAME' => 'Z:\\home\\yiindo-master.dev\\www\\yiindo\\yii'
+    'PATH_TRANSLATED' => 'Z:\\home\\yiindo-master.dev\\www\\yiindo\\yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1430730806.5009
+    'REQUEST_TIME' => 1430730806
+    'argv' => [
+        0 => 'Z:\\home\\yiindo-master.dev\\www\\yiindo\\yii'
+        1 => 'init'
+    ]
+    'argc' => 2
+]
+2015-05-04 09:13:48 [-][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Class 'app\rbac\AuthorRule' not found' in Z:\home\yiindo-master.dev\www\yiindo\console\controllers\RbacController.php:36
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-05-04 09:13:48 [-][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\Александр\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'NOTEBOOK'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Александр'
+    'LOCALAPPDATA' => 'C:\\Users\\Александр\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NOTEBOOK'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\OpenCL SDK\\2.0\\bin\\x86;C:\\Program Files (x86)\\Intel\\OpenCL SDK\\2.0\\bin\\x64;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;Z:\\usr\\local\\php5;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PHP_COMMAND' => 'php.exe'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 42 Stepping 7, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2a07'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\8523~1\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\8523~1\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'Notebook'
+    'USERNAME' => 'Александр'
+    'USERPROFILE' => 'C:\\Users\\Александр'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'YII_PATH' => 'Z:\\home\\yiindo-master.dev\\www\\yiindo\\'
+    'PHP_SELF' => 'Z:\\home\\yiindo-master.dev\\www\\yiindo\\yii'
+    'SCRIPT_NAME' => 'Z:\\home\\yiindo-master.dev\\www\\yiindo\\yii'
+    'SCRIPT_FILENAME' => 'Z:\\home\\yiindo-master.dev\\www\\yiindo\\yii'
+    'PATH_TRANSLATED' => 'Z:\\home\\yiindo-master.dev\\www\\yiindo\\yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1430730828.5532
+    'REQUEST_TIME' => 1430730828
+    'argv' => [
+        0 => 'Z:\\home\\yiindo-master.dev\\www\\yiindo\\yii'
+        1 => 'rbac/init'
+    ]
+    'argc' => 2
+]
+2015-05-04 09:19:18 [-][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Class 'app\rbac\AuthorRule' not found' in Z:\home\yiindo-master.dev\www\yiindo\console\controllers\RbacController.php:36
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-05-04 09:19:18 [-][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\Александр\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'NOTEBOOK'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Александр'
+    'LOCALAPPDATA' => 'C:\\Users\\Александр\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NOTEBOOK'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\OpenCL SDK\\2.0\\bin\\x86;C:\\Program Files (x86)\\Intel\\OpenCL SDK\\2.0\\bin\\x64;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;Z:\\usr\\local\\php5;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PHP_COMMAND' => 'php.exe'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 42 Stepping 7, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2a07'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\8523~1\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\8523~1\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'Notebook'
+    'USERNAME' => 'Александр'
+    'USERPROFILE' => 'C:\\Users\\Александр'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'YII_PATH' => 'Z:\\home\\yiindo-master.dev\\www\\yiindo\\'
+    'PHP_SELF' => 'Z:\\home\\yiindo-master.dev\\www\\yiindo\\yii'
+    'SCRIPT_NAME' => 'Z:\\home\\yiindo-master.dev\\www\\yiindo\\yii'
+    'SCRIPT_FILENAME' => 'Z:\\home\\yiindo-master.dev\\www\\yiindo\\yii'
+    'PATH_TRANSLATED' => 'Z:\\home\\yiindo-master.dev\\www\\yiindo\\yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1430731158.5591
+    'REQUEST_TIME' => 1430731158
+    'argv' => [
+        0 => 'Z:\\home\\yiindo-master.dev\\www\\yiindo\\yii'
+        1 => 'rbac/init'
+    ]
+    'argc' => 2
+]
+2015-05-04 09:19:22 [-][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Class 'app\rbac\AuthorRule' not found' in Z:\home\yiindo-master.dev\www\yiindo\console\controllers\RbacController.php:36
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-05-04 09:19:22 [-][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\Александр\\AppData\\Roaming'
+    'asl_log' => 'Destination=file'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'NOTEBOOK'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Александр'
+    'LOCALAPPDATA' => 'C:\\Users\\Александр\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NOTEBOOK'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\OpenCL SDK\\2.0\\bin\\x86;C:\\Program Files (x86)\\Intel\\OpenCL SDK\\2.0\\bin\\x64;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;Z:\\usr\\local\\php5;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PHP_COMMAND' => 'php.exe'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 42 Stepping 7, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '2a07'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\8523~1\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\8523~1\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'Notebook'
+    'USERNAME' => 'Александр'
+    'USERPROFILE' => 'C:\\Users\\Александр'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'YII_PATH' => 'Z:\\home\\yiindo-master.dev\\www\\yiindo\\'
+    'PHP_SELF' => 'Z:\\home\\yiindo-master.dev\\www\\yiindo\\yii'
+    'SCRIPT_NAME' => 'Z:\\home\\yiindo-master.dev\\www\\yiindo\\yii'
+    'SCRIPT_FILENAME' => 'Z:\\home\\yiindo-master.dev\\www\\yiindo\\yii'
+    'PATH_TRANSLATED' => 'Z:\\home\\yiindo-master.dev\\www\\yiindo\\yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1430731162.6743
+    'REQUEST_TIME' => 1430731162
+    'argv' => [
+        0 => 'Z:\\home\\yiindo-master.dev\\www\\yiindo\\yii'
+        1 => 'rbac/init'
+    ]
+    'argc' => 2
+]

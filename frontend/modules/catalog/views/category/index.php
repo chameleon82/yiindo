@@ -18,7 +18,6 @@ $this->params['catalog_category'] = $model;
 ?>
 
 <h1><?= $model->title ?></h1>
-
 <?php
 
 $attributes = [];
@@ -26,6 +25,7 @@ $attributes = [];
 //$attributes[] =  [ 'attribute' => 'title', 'label' => 'Наиме'  ];
 $attributes[] =  [   'attribute'=>'title'
                     ,'format'=>'raw'
+
                     ,'class' => 'yii\grid\DataColumn'
                     ,'label' => 'Наименование'
                     ,'value' => function($data) {
@@ -37,13 +37,15 @@ $attributes[] =  [   'attribute'=>'title'
 
 foreach ($model->getCategoryAttributes()->all() as $categoryAttribute) {
     $attributes[] =
-        [ 'attribute' => 'av_' . $categoryAttribute->id ,
+        [   'attribute' =>  $categoryAttribute->code ,
             'label' => $categoryAttribute->title,
-        ]
+    ]
     ;
 }
 
 $attributes[] =  [ 'attribute' => 'cost', 'label' => 'Цена' , 'format' => ['currency','RUR']];
+
+//print_r($attributes);
 /*
 //$mo = Catalog::find(1)->one();
 //print_r($mo->attributeValues);
@@ -53,6 +55,7 @@ echo GridView::widget([
     'dataProvider' => $dataProvider,
     'columns' => $attributes
 ]);
+
 
 //    echo Html::a('ghh', Url::to(['default/index', 'id' => 100]));
 

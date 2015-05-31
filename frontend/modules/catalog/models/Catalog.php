@@ -15,6 +15,11 @@ use yii\web\IdentityInterface;
  */
 class Catalog extends ActiveRecord
 {
+    const STATUS_NOT_MODERATED  = 0;
+    const STATUS_MODERATED = 1;
+    const STATUS_IGNORED = 2;
+
+    private $__attributes;
 
     /**
      * @inheritdoc
@@ -28,6 +33,7 @@ class Catalog extends ActiveRecord
             [['title', 'cost'], 'required'],
     //        ['categoryAttributes', 'safe'],
             ['attributeValues', 'safe'],
+            ['images','safe'],
         ];
     }
 
@@ -67,6 +73,17 @@ class Catalog extends ActiveRecord
     /**
      * @inheritdoc
      */
+    public function getAuthor() {
+        return $this->hasOne(\common\models\User::className(), ['id' => 'author_id']);
+    }
+
+    public function getImages() {
+        return $this->hasMany(\common\models\Images::className(), ['parent_id' => 'id'])->where(['module' => 'catalog',]);//->sort();
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function getCategoryAttributes() {
       //  return $this->hasMany(CatalogAttributes::className(), ['id' => 'attribute_id'])->viaTable(CatalogValues::tableName(),['catalog_id' => 'id']);
         return $this->hasMany(CatalogAttributes::className(), ['category_id' => 'category_id']);
@@ -78,7 +95,7 @@ class Catalog extends ActiveRecord
     public function getAttributeValues()
     {
         $_att = [];
-        $cas = CatalogAttributes::find()->where(['category_id' => $this->category_id])->orderBy('id')->all(); //   foreach
+        $cas = CatalogAttributes::find()->where(['category_id' => $this->category_id])->orderBy('ordering')->all(); //   foreach
         foreach ($cas as $ca) {
             $att = CatalogValues::find()->where(['catalog_id' => $this->id, 'attribute_id' => $ca->id])->one();
             if (!$att) {$att = new CatalogValues(); $att->attribute_id = $ca->id;}
@@ -96,12 +113,29 @@ class Catalog extends ActiveRecord
         return $this->hasMany(CatalogAttributes::className(), ['category_id' => 'category_id']);
     }
 
+    public function getValuesByAttribute($attribute_id) {
+        return $this->hasMany(CatalogValues::className(),['catalog_id'=>'id']);//->where(['attribute_id' => $attribute_id]);
+    }
+
     /**
      * @inheritdoc
      */
     public function getId()
     {
         return $this->getPrimaryKey();
+    }
+
+    public function __get($attribute) {
+        if (!isset($this->__attributes) && isset($this->id)) {
+            $atts = $this->allCategoryAttributes;
+            if (is_array($atts)) {
+                foreach($atts as $att) {
+                    $this->__attributes[$att->code] = CatalogValues::find()->where(['catalog_id'=>$this->id,'attribute_id'=>$att->id])->one();
+                }
+            }
+        }
+        if (isset($this->__attributes[$attribute])) return $this->__attributes[$attribute]->value;
+        return parent::__get($attribute);
     }
 
     /**
@@ -112,6 +146,7 @@ class Catalog extends ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'cost' => Yii::t('app', 'Cost'),
+            'title' => Yii::t('catalog','Title'),
             'content' => Yii::t('app','Content'),
             'disabled' => Yii::t('app', 'Disabled'),
         ];
@@ -123,6 +158,7 @@ class Catalog extends ActiveRecord
     public function save($runValidation = true, $attributeNames = null) {
         $transaction = $this::getDb()->beginTransaction();
         $_success = true;
+        if (!$this->id) {$this->author_id = \Yii::$app->user->id;}
         $result = parent::save($runValidation,$attributeNames);
         if (!$result) $_success = false;
         foreach($this->attributeValues as $key => $attribute) {

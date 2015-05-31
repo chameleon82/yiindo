@@ -22,9 +22,10 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '/' => 'site/index',
+                'images/<mdl:[\w-]+>/<pid:\d+>/<filename:.+>' => 'images/default',
                 '<_c:\w+>/<id:\d+>'=>'<_c>/view',
                 '<_c:\w+>s' => '<_c>/index',
-                '<module:(catalog)>/<_c:category>/<slug:[\w-]+>' => '<module>/<_c>/index',
+                '<module:(catalog)>/<_c:category>/<slug:[\w- ]+>' => '<module>/<_c>/index',
               //  '<module:(catalog)>/<_c:\w+>/<_a:\w+>/<id:\d+>' => '<module>/<_c>/view',
                 'POST <controller:\w+>s' => '<controller>/create',
                 'PUT <controller:\w+>/<id:\d+>'    => '<controller>/update',
@@ -47,10 +48,19 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'formatter' => [
+            'dateFormat' => 'dd.MM.yyyy',
+            'decimalSeparator' => ',',
+            'thousandSeparator' => ' ',
+            'currencyCode' => 'RUR',
+        ],
     ],
     'modules' => [
         'catalog' => [
             'class' => 'app\modules\catalog\Module',
+        ],
+        'gallery' => [
+            'class' => 'app\modules\gallery\Module',
         ],
     ],
     'params' => $params,

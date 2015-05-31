@@ -26,9 +26,12 @@ class CatalogCategories extends \yii\db\ActiveRecord
 
     public function parentCategory()
     {
-        return $this->hasOne(CatalogCategories::className(), ['id' => 'parent_id']);
+        return $this->hasOne(self::className(), ['id' => 'parent_id'])->from(['parent'=>self::tableName()]);
     }
 
+    public function childCategories() {
+        return $this->hasMany(self::className(), ['parent_id' => 'id'])->from(['parent'=>self::tableName()]);
+    }
     /**
      * @inheritdoc
      */
@@ -49,9 +52,11 @@ class CatalogCategories extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['disabled'], 'required'],
-            [['disabled', 'parent_id'], 'integer'],
-            [['title', 'slug'], 'string', 'max' => 50]
+            [['title', 'slug','disabled'], 'required'],
+            [['disabled', 'parent_id','ordering'], 'integer'],
+            [['title', 'slug','code'], 'string', 'max' => 50],
+            [['code'],'match','pattern'=>'/^[a-z]\w*$/i'],
+            [['slug'],'unique']
         ];
     }
 
@@ -63,9 +68,11 @@ class CatalogCategories extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'title' => Yii::t('app', 'Title'),
+            'code' => Yii::t('app','Code'),
             'slug' => Yii::t('app', 'Slug'),
+            'ordering' => Yii::t('app', 'Ordering'),
             'disabled' => Yii::t('app', 'Disabled'),
-            'parent_id' => Yii::t('app', 'Parent ID'),
+            'parent_id' => Yii::t('app', 'Parent'),
         ];
     }
 

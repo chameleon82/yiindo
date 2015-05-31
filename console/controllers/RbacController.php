@@ -32,6 +32,22 @@ class RbacController extends Controller
         $auth->add($author);
         $auth->addChild($author, $createPost);
 
+        // add the rule
+        $rule = new \common\rbac\AuthorRule;
+        $auth->add($rule);
+
+        // add the "updateOwnPost" permission and associate the rule with it.
+        $updateOwnPost = $auth->createPermission('updateOwnPost');
+        $updateOwnPost->description = 'Update own post';
+        $updateOwnPost->ruleName = $rule->name;
+        $auth->add($updateOwnPost);
+
+        // "updateOwnPost" will be used from "updatePost"
+        $auth->addChild($updateOwnPost, $updatePost);
+
+        // allow "author" to update their own posts
+        $auth->addChild($author, $updateOwnPost);
+
         // add "admin" role and give this role the "updatePost" permission
         // as well as the permissions of the "author" role
         $admin = $auth->createRole('admin');
@@ -42,7 +58,7 @@ class RbacController extends Controller
 
         // Assign roles to users. 1 and 2 are IDs returned by IdentityInterface::getId()
         // usually implemented in your User model.
-        $auth->assign($author, 2);
+        $auth->assign($admin, 2);
         $auth->assign($admin, 1);
     }
 

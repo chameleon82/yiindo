@@ -5,55 +5,41 @@ use yii\helpers\Url;
 use yii\grid\GridView;
 use yii\data\ActiveDataProvider;
 use yii\bootstrap\Collapse;
-use app\modules\Catalog\models\CatalogCategories;
+use app\modules\catalog\models\CatalogCategories;
 
-$this->title = 'YiiNDO';
-$this->params['adminmenu'][] = ['label' => \app\modules\catalog\Module::t('catalog','Manage Flex'), 'url' => ['flex/index']];
+$this->title = \Yii::t('app','Catalog');
+$this->params['adminmenu'][] = ['label' => \app\modules\catalog\Module::t('catalog','Categories'), 'url' => ['categories/index']];
+$this->params['adminmenu'][] = ['label' => \app\modules\catalog\Module::t('catalog','Attributes'), 'url' => ['attributes/index']];
 
 $breadcrumbs = (array)$this->params['breadcrumbs'];
 $this->params['breadcrumbs'] = [['label' => \Yii::t('app','Catalog'), 'url' => ['/catalog']]];
-
-if (isset($this->params['catalog_category']))
-    foreach ( $this->params['catalog_category']->route as $p)
-        $this->params['breadcrumbs'][] = ['label' => $p->title, 'url' => ['category/index','slug'=>$p->slug]];
-
 $this->params['breadcrumbs'] = array_merge($this->params['breadcrumbs'],$breadcrumbs);
 
 
 $this->beginContent('@app/views/layouts/main.php');
 ?>
-<div class="catalog-default-index">
-    <div class="row"><div class="col-md-3">
-            <?
+    <div class="catalog-default-index">
+        <div class="row"><div class="col-md-3">
 
-            $ids=[]; $id = $this->params['catalog_category']->id;
-            if ( $this->params['catalog_category']->route)
-                foreach ($this->params['catalog_category']->route as $r)
-                    $ids[]=$r->id;
-            function collapse_tree($parent,$ids,$id) {
+                <?php if (isset($this->blocks['catalogNav'])): ?>
+                    <div class="row"><div class="col-md-12"><?= $this->blocks['catalogNav'] ?></div></div>
+                <?
+                endif;
 
-                $out = ( $parent == null ? '<div class="list-group" id="navigation">' : '<div class="submenu panel-collapse collapse'.(in_array($parent,$ids)).'" id="navigation-'.$parent.'">' ) ;
-
-                foreach (CatalogCategories::find()->where(['parent_id'=>$parent])->all() as $cat) {
-                    $cnt = CatalogCategories::find()->where(['parent_id'=>$cat->id])->count();
-                    $out.= $cnt ? ' <a data-toggle="collapse" href="#navigation-'.$cat->id.'" class="list-group-item'.( $cat->id == $id ? ' active':"").'">'.$cat->title.' <b class="caret"></b></a>'
-                        : ' <a href="'.Url::to(['category/index','slug'=>$cat->slug]).'" class="list-group-item'.( $cat->id == $id ? ' active':"").'">'.$cat->title.'</a>';
-                    $out.= collapse_tree($cat->id,$ids,$id);
-                }
-                $out.='</div>';
-                return $out;
-            }
-
-            echo collapse_tree(null,$ids,$id);
-
-            ?>        </div>
-        <div class="col-md-9"><?
+                if (isset($this->blocks['filtersBlock'])): ?>
+                    <div class="row"><div class="col-md-12"><div class="panel panel-default"><div class="panel-body"><?= $this->blocks['filtersBlock'] ?></div></div></div></div>
+                <?    else: ?>
+                <?    endif; ?>
 
 
-            echo $content;
+            </div>
+            <div class="col-md-9"><?
 
-            ?>        </div>
-    </div>
+
+                echo $content;
+
+                ?>        </div>
+        </div>
     </div>
 <?
 
