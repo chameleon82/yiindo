@@ -16,3 +16,8 @@ INSTALLATION
 php composer.phar global require "fxp/composer-asset-plugin:1.0.0-beta4"
 php composer.phar create-project --prefer-dist --stability=dev chameleon82/yiindo yiindo
 ~~~
+or
+~~~
+composer global require "fxp/composer-asset-plugin:1.0.0-beta4"
+composer create-project --prefer-dist --stability=dev chameleon82/yiindo yiindo
+~~~
